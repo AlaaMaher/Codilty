@@ -29,11 +29,42 @@ class BinaryGap {
         return maxCounter
     }
 
+    fun solve(A: String,P: String): Int {
+        var started = false
+        var dislikeA = 0
+        var dislikeP = 0
+
+        var likeA = 0
+        var likeP = 0
+
+        var AllCount = 0
+        for (i in A.indices) {
+            var c = A.substring(i, i + 1)
+            if (c =="1"){
+                likeA++
+            }
+            else{
+                dislikeA++
+            }
+        }
+        for (j in P.indices) {
+            var c2 = A.substring(j, j + 1)
+            if (c2 =="1")
+            likeP++
+            else dislikeP++
+        }
+
+        AllCount= (likeA+likeP) xor (dislikeA+dislikeP)
+
+        // println(binaryString)
+        return AllCount
+    }
+
 }
 
 fun main() {
     val bg = BinaryGap()
-    println(bg.test(529))
+    println(bg.solve("010101","101101"))
 }
 
 fun solution(N: Int): Int {
